@@ -1,0 +1,51 @@
+package com.chrissy.springbootmall.service.impl;
+
+import com.chrissy.springbootmall.constant.ProductCategory;
+import com.chrissy.springbootmall.dao.ProductDao;
+import com.chrissy.springbootmall.dto.ProductQueryParams;
+import com.chrissy.springbootmall.dto.ProductRequest;
+import com.chrissy.springbootmall.model.Product;
+import com.chrissy.springbootmall.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+@Component
+public class ProductServiceImpl implements ProductService {
+    @Autowired
+    private ProductDao productDao;
+
+    @Override
+    public List<Product> getProducts(ProductQueryParams productQueryParams) {
+
+        return productDao.getProducts(productQueryParams);
+    }
+
+    @Override
+    public Integer countProduct(ProductQueryParams productQueryParams) {
+        return productDao.countProduct(productQueryParams);
+    }
+
+    @Override
+    public Product getProductById(Integer productId) {
+
+
+        return productDao.getProductById(productId);
+    }
+
+    @Override
+    public Integer createProduct(ProductRequest productRequest) {
+        return productDao.createProduct(productRequest);
+    }
+
+    @Override
+    public void updateProduct(Integer productId, ProductRequest productRequest) {
+        productDao.updateProduct(productId,productRequest);
+    }
+
+    @Override
+    public void deleteProduct(Integer productId) {
+        productDao.deleteProduct(productId);
+    }
+}
